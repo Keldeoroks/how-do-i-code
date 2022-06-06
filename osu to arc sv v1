@@ -1,0 +1,16 @@
+import math
+import numpy as np
+import decimal as d
+
+bpm = input("insert bpm: ")
+t = input("insert INHERITED timing points (green lines): ")
+s = t.split(",")
+g = np.array(list(s),dtype=np.dtype(d.Decimal))
+nt = 1 / d.Decimal(g[1]) * d.Decimal(-100) * d.Decimal(bpm)
+print("timing(", end = "")
+print(g[0], end = "")
+print(",", end = "")
+print(round(nt,2), end = "")
+print(",", end = "")
+print(g[2], end = "")
+print(")")
