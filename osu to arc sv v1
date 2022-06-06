@@ -9,4 +9,4 @@ timings = np.array(s)
 for x in timings:
     arr = x.split(sep=",")
     nt = 1 / d.Decimal(arr[1]) * d.Decimal(-100) * d.Decimal(bpm)
-    print(f"timing({arr[0]},{round(nt,2)},{arr[2]});")
+    print(f"timing({arr[0]},{round(nt,2)},{arr[2]}).00;")
