@@ -1,12 +1,19 @@
 import math
 import numpy as np
-import decimal as d
+from decimal import Decimal
 
 bpm = input("insert bpm: ")
-t = input("insert INHERITED timing points (green lines): ")
+mult = 1
+t = input("insert timing points: ")
 s = t.split(" ")
 timings = np.array(s)
+print(f"timing(0,{bpm},4.00);")
 for x in timings:
-    arr = x.split(sep=",")
-    nt = 1 / d.Decimal(arr[1]) * d.Decimal(-100) * d.Decimal(bpm)
-    print(f"timing({arr[0]},{round(nt,2)},{arr[2]}.00);")
+    arr = x.split(",")
+    if arr[6] == "0":
+        nt = 1 / Decimal(arr[1]) * Decimal(-100) * Decimal(bpm) * Decimal(mult)
+        print(f"timing({round(Decimal(arr[0]),0)},{round(nt,2)},{arr[2]}.00);")
+    elif arr[6] == "1":
+        nt = 60000 / Decimal(arr[1])
+        mult = Decimal(nt) / Decimal(bpm)
+        print(f"timing({round(Decimal(arr[0]),0)},{round(nt,2)},{arr[2]}.00);")
