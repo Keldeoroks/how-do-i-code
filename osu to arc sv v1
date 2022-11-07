@@ -1,19 +1,16 @@
 import math
-import numpy as np
-from decimal import Decimal
 
 bpm = input("insert bpm: ")
 mult = 1
 t = input("insert timing points: ")
-s = t.split(" ")
-timings = np.array(s)
+timings = t.split(" ")
 print(f"timing(0,{bpm},4.00);")
 for x in timings:
     arr = x.split(",")
     if arr[6] == "0":
-        nt = 1 / Decimal(arr[1]) * Decimal(-100) * Decimal(bpm) * Decimal(mult)
-        print(f"timing({round(Decimal(arr[0]),0)},{round(nt,2)},{arr[2]}.00);")
+        nt = 1 / float(arr[1]) * float(-100) * float(bpm) * float(mult)
+        print(f"timing({round(float(arr[0]),0)},{round(nt,2)},{arr[2]}.00);")
     elif arr[6] == "1":
-        nt = 60000 / Decimal(arr[1])
-        mult = Decimal(nt) / Decimal(bpm)
-        print(f"timing({round(Decimal(arr[0]),0)},{round(nt,2)},{arr[2]}.00);")
+        nt = 60000 / float(arr[1])
+        mult = float(nt) / float(bpm)
+        print(f"timing({round(int(arr[0]),0)},{round(nt,2)},{arr[2]}.00);")
