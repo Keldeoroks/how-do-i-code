@@ -1,3 +1,5 @@
+# use https://www.online-python.com/ to compile
+
 import math
 
 bpm = input("insert bpm: ")
