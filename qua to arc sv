@@ -3,7 +3,7 @@ import math
 bpm = input("insert bpm: ")
 mult = 1
 t = input("insert timing points: ")
-timings = t.split("-")
+timings = t.split(" - ")
 print(f"timing(0,{bpm},4.00);")
 for x in timings:
     arr = [float(s) for s in x.split(" ") if s.strip() and all(c.isdigit() or c in ".-" for c in s)]
